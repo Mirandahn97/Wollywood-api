@@ -26,7 +26,7 @@ model Users {
   password  String
   role      Role
   isActive  Boolean
-  createdAt DateTime
+  createdAt DateTime @default(now())
 
   @@map("user")
 }
@@ -36,7 +36,7 @@ model Cartlines {
   userId     Int
   posterId   Int
   quantity   Int
-  createdeAt DateTime
+  createdeAt DateTime @default(now())
 
   @@map("cartlines")
 }
@@ -51,8 +51,8 @@ model posters {
   height      Int
   price       Decimal  @db.Decimal(10, 2)
   stock       Int
-  createdeAt  DateTime
-  updatedeAt  DateTime
+  createdeAt  DateTime @default(now())
+  updatedeAt  DateTime @updatedAt
 
   @@map("posters")
 }
@@ -62,7 +62,7 @@ model userRatings {
   userId    Int
   posterId  Int
   numStars  Int
-  createdAt DateTime
+  createdAt DateTime @default(now())
 
   @@map("userRatings")
 }
@@ -71,8 +71,8 @@ model genres {
   id        Int      @id @default(autoincrement())
   title     String
   slug      String
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("genres")
 }
