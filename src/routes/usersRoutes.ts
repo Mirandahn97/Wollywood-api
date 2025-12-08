@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getRecords } from "../controller/userController.js";
+import { getRecords } from "../controller/usersController.js";
 
 const router = Router()
 router.get('/', getRecords)

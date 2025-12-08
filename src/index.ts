@@ -1,6 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import { userRoutes } from './routes/userRoutes.js'
+import { userRoutes } from './routes/usersRoutes.js'
 
 //Indlæs miljøvariabler fra .env (uden at vise logs)
 dotenv.config({ quiet: true})

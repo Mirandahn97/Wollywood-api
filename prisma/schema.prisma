@@ -13,11 +13,74 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id Int @id @default(autoincrement())
-  name String 
-  email String @unique
-  password String
+enum Role {
+  USER
+  ADMIN
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  firstname String
+  lastname  String
+  email     String   @unique
+  password  String
+  role      Role
+  isActive  Boolean
+  createdAt DateTime
 
   @@map("user")
+}
+
+model Cartlines {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  posterId   Int
+  quantity   Int
+  createdeAt DateTime
+
+  @@map("cartlines")
+}
+
+model posters {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String
+  description String
+  image       String
+  width       Int
+  height      Int
+  price       Decimal  @db.Decimal(10, 2)
+  stock       Int
+  createdeAt  DateTime
+  updatedeAt  DateTime
+
+  @@map("posters")
+}
+
+model userRatings {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  posterId  Int
+  numStars  Int
+  createdAt DateTime
+
+  @@map("userRatings")
+}
+
+model genres {
+  id        Int      @id @default(autoincrement())
+  title     String
+  slug      String
+  createdAt DateTime
+  updatedAt DateTime
+
+  @@map("genres")
+}
+
+model genrePosterRel {
+  id       Int @id @default(autoincrement())
+  genreId  Int
+  posterId Int
+
+  @@map("genrePosterRel")
 }
