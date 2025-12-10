@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import { userRoutes } from './routes/usersRoutes.js'
 import { cartlineRoutes } from './routes/cartlinesRoutes.js'
 import { posterRoutes } from './routes/postersRoutes.js'
+import { genreRouts } from './routes/genresRoutes.js'
 
 //Indlæs miljøvariabler fra .env (uden at vise logs)
 dotenv.config({ quiet: true})
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true}))
 //Brug vores user-routes under /api/users
 app.use('/api/users', userRoutes)
 app.use('/api/posters', posterRoutes)
+app.use('/api/genres', genreRouts)
 app.use('/api/cartlines', cartlineRoutes)
 
 
