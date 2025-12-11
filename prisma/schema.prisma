@@ -39,7 +39,7 @@ model Cartline {
   userId     Int
   posterId   Int
   quantity   Int
-  createdeAt DateTime @default(now())
+  createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
   poster Poster @relation(fields: [posterId], references: [id])
@@ -57,8 +57,8 @@ model Poster {
   height      Int
   price       Decimal  @db.Decimal(10, 2)
   stock       Int
-  createdeAt  DateTime @default(now())
-  updatedeAt  DateTime @updatedAt
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   cartlines Cartline[]
   userRating userRating[]
@@ -87,7 +87,7 @@ model Genre {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-genrePosterRel genrePosterRel[]
+genrePosters genrePosterRel[]
   @@map("genres")
 }
 

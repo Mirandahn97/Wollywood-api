@@ -23,20 +23,40 @@ export const getRecords = async (req: Request, res: Response) => {
  * Method Get Record
  * @param req 
  * @param res
- * @returns Array
+ * @returns Object
  */
 
-export const getRecord = async (req: Request, res: Response) => {
-    const id = Number(req.params.id)
+export const getRecord = async (req: Request, res: Response) => {    
+    const slug = req.params.slug
 
-    if (!id) {
-        return res.status(400).json({ error: 'Id is missing' })
+    if (!slug) {
+        return res.status(400).json({ error: 'Slug is missing' })
     }
 
     try {
-        const data = await prisma.genre.findUnique({
-            where: { id },
+        const data = await prisma.genre.findFirst({
+            where: { slug },
+            select: {
+                title: true,
+                slug: true,
+                genrePosters: {
+                    select: {
+                        poster: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                }
+            }
         })
+
+        const result = {
+            ...data,
+            posters: data?.genrePosters.map(rel => rel.poster)
+        }
+        console.log(result);
+        
         return res.status(200).json(data)
     } catch (error) {
         console.error(error);
@@ -48,7 +68,7 @@ export const getRecord = async (req: Request, res: Response) => {
  * Method Create Record
  * @param req 
  * @param res 
- * @returns Array
+ * @returns Object
  */
 
 export const createRecord = async (req: Request, res: Response) => {

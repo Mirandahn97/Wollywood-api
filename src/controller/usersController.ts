@@ -50,7 +50,7 @@ export const getRecord = async (req: Request, res: Response) => {
  * Method Create Record
  * @param req
  * @param res
- * @returns Array
+ * @returns Object
  */
 
 export const createRecord = async (req: Request, res: Response) => {

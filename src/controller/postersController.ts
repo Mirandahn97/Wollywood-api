@@ -24,7 +24,7 @@ export const getRecords = async (req: Request, res: Response) => {
  * Method Get Record
  * @param req
  * @param res
- * @returns Array
+ * @returns Object
  */
 
 export const getRecord = async (req: Request, res: Response) => {
@@ -49,7 +49,7 @@ export const getRecord = async (req: Request, res: Response) => {
  * Method Create Record
  * @param req
  * @param res
- * @returns Array
+ * @returns Object
  */
 
 export const createRecord = async (req: Request, res: Response) => {
@@ -83,7 +83,7 @@ export const createRecord = async (req: Request, res: Response) => {
  * Method Update Record
  * @param req
  * @param res
- * @returns Array
+ * @returns Object
  */
 
 export const updateRecord = async (req: Request, res: Response) => {
