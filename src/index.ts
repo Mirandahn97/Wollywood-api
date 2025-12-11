@@ -30,6 +30,7 @@ app.use('/api/userRatinges', userRoutes)
 app.use('/api/cartlines', cartlineRoutes)
 app.use('/login', loginRouter)
 app.use('/auth', authRoutes)
+app.use('/auth', authRoutes)
 
 //Start serveren 
 app.listen(port, () => {
