@@ -96,7 +96,7 @@ model genrePosterRel {
   genreId  Int
   posterId Int
 
-  genre Genre @relation(fields: [genreId], references: [id])
-  poster Poster @relation(fields: [posterId], references: [id])
+  genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+  poster Poster @relation(fields: [posterId], references: [id], onDelete: Cascade)
   @@map("genrePosterRel")
 }
