@@ -5,6 +5,6 @@ import { authenticateToken } from '../middleware/authenticateToken.js'
 
 const router = Router()
 
-router.post('/' , authenticateToken, authorizeRole('ADMIN'), login)
+router.post('/', login)
 
 export { router as loginRouter}
