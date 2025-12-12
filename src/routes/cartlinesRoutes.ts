@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { createRecord, deleteRecord, getRecord, getRecords, updateRecord } from "../controller/cartlinesController";
+import { authorizeRole } from "../middleware/authorizeRole";
+import { authenticateToken } from "../middleware/authenticateToken";
 
 
 const router = Router()
 router.get('/', getRecords)
 router.get('/:id', getRecord)
-router.post('/', createRecord)
-router.put('/:id', updateRecord)
-router.delete('/:id', deleteRecord)
+router.post('/', authenticateToken, authorizeRole('ADMIN'), createRecord)
+router.put('/:id', authenticateToken, authorizeRole('ADMIN'), updateRecord)
+router.delete('/:id', authenticateToken, authorizeRole('ADMIN'), deleteRecord)
 
 export const cartlineRoutes = router
